@@ -14,3 +14,6 @@ class cliente:
 
     def puede_comprar_dolar(self) -> bool:
         return False
+
+    def posee_cuenta_corriente(self) -> bool:
+        return False

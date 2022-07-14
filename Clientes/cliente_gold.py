@@ -11,3 +11,6 @@ class clientesgold(cliente):
 
     def puede_comprar_dolar(self) -> bool:
         return True
+
+    def posee_cuenta_corriente(self) -> bool:
+        return True
