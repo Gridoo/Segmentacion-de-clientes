@@ -2,7 +2,7 @@ from .razon import Razon
 from ..cliente import Cliente
 from ..evento import Evento
 
-class RazonComprarDolar(razon):
+class RazonCompraDolar(Razon):
 
 
     def resolver(self, cliente: Cliente, evento: Evento) -> str:
