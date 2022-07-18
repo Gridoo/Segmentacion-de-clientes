@@ -1,12 +1,15 @@
 import json
 
-with open("ejemplos_json/eventos_black.json") as file:
+with open("ejemplos_json/eventos_classic.json") as file:
     data = json.load(file)
     transacciones = data["transacciones"]
+    rechazadas=[]
     for i in range(len(transacciones)):
         x=transacciones[i]["estado"]
         print(x)
-        
+        if x=="RECHAZADA":
+            rechazadas.append(transacciones[i]["numero"])
+    print(rechazadas)    
 class cliente:
     def __init__(self, datos, direccion) -> None:
         self.numero = datos["numero"]
