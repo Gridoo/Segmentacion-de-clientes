@@ -2,7 +2,6 @@ from turtle import title
 
 
 def creacion_html():
-    # the html code which will go in the file GFG.html
     f = open('index.html', 'w')
     html = """
         <html>
