@@ -1,5 +1,14 @@
+import json
+
+with open("ejemplos_json/eventos_black.json") as file:
+    data = json.load(file)
+    transacciones = data["transacciones"]
+    for i in range(len(transacciones)):
+        x=transacciones[i]["estado"]
+        print(x)
+        
 class cliente:
-    def __init__(self) -> None:
+    def __init__(self, datos, direccion) -> None:
         self.numero = datos["numero"]
         self.nombre = datos["nombre"]
         self.apellido = datos["apellido"]
