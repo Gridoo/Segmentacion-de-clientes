@@ -1,3 +1,6 @@
+from razones import Razon
+
+
 class Cuenta():
     def __init__(self,monto,limiteExtr,limiteTransf,costTransf,saldoDesc):
         self.limite_extraccion_diario=limiteExtr

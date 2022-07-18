@@ -1,4 +1,4 @@
-from clientes import cliente
+from cliente import cliente
 
 
 class clientesgold(cliente):
@@ -6,7 +6,7 @@ class clientesgold(cliente):
     def puede_crear_chequera(self, cant_chequeras) -> bool:
          if cant_chequeras >= 1:
             return False
-        else:
+         else:
             return True
 
     def puede_crear_tarjeta_de_credito(self, cant_tarjetas) -> bool:
