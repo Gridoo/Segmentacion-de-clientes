@@ -1,8 +1,7 @@
-from clientes import cliente
+from clientes import Cliente
 
 
-class clientesgold(cliente):
-
+class Clientesgold(Cliente):
     def puede_crear_chequera(self) -> bool:
         return True
 
