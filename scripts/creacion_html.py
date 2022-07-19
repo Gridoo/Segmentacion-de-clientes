@@ -1,5 +1,6 @@
-from turtle import title
-
+#from turtle import title
+from manipulacion_json import *
+#import manipulacion_json
 
 def creacion_html():
     f = open('index.html', 'w')
@@ -29,7 +30,7 @@ def creacion_html():
   <div class="content">
     
     <div class="container">
-      <h1 class="mb-5">Reporte Transacciones - ITBANK</h1>
+      <h1 class="mb-5">Reporte Transacciones - ITBANK {Cliente.Datos.nombre}</h1>
       
       <div class="container">
         <table class="table custom-table">
