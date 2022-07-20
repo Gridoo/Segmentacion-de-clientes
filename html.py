@@ -1,9 +1,9 @@
-import clientes
-
+from clientes import *
+import codecs
 def creacion_html():
     f = open('index.html', 'w')
     html = """
-        <html lang="en">
+<html lang="en">
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -23,13 +23,13 @@ def creacion_html():
   <div class="content">
     
     <div class="container">
-      <h1 class="mb-5">Reporte Transacciones - ITBANK {Cliente}</h1>
+      <h1 class="mb-5">Reporte Transacciones - ITBANK"</h1>
       
       <div class="container">
         <table class="table custom-table">
             <thead>
               <tr>  
-                <th scope="col">Nombre</th>
+                <th scope="col">Nombre: {{nombre}}</th>
                 <th scope="col">Número</th>
                 <th scope="col">DNI</th>
                 <th scope="col">Dirección</th> 
