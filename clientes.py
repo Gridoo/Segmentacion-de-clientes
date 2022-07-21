@@ -4,19 +4,22 @@ with open("eventos_classic.json") as archivo:
     datos=json.load(archivo)
 
 class Direccion:
-    calle=datos["direccion"]["calle"]
-    numero=datos["direccion"]["numero"]
-    ciudad=datos["direccion"]["ciudad"]
-    provincia=datos["direccion"]["provincia"]
-    pais=datos["direccion"]["pais"]
-
+    def __init__(self,datos):
+        self.calle=datos["direccion"]["calle"]
+        self.numero=datos["direccion"]["numero"]
+        self.ciudad=datos["direccion"]["ciudad"]
+        self.provincia=datos["direccion"]["provincia"]
+        self.pais=datos["direccion"]["pais"]
+direccion=Direccion(datos)
 class Cliente:
-    nombre=datos["nombre"]
-    apellido=datos["apellido"]
-    numero=datos["numero"]
-    dni=datos["dni"]
-    direccion=Direccion
-    tipo=datos["tipo"]
+    def __init__(self,datos):
+        self.nombre=datos["nombre"]
+        self.apellido=datos["apellido"]
+        self.numero=datos["numero"]
+        self.dni=datos["dni"]
+        self.direccion=Direccion
+        self.tipo=datos["tipo"]
+data=Cliente(datos)
 
 class ClienteClassic(Cliente):
     def __init__(self,data) -> None:
