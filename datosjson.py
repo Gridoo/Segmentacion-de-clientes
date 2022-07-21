@@ -1,4 +1,9 @@
-
+import json
+from clientes import Direccion
+from clientes import Cliente
+def creacion_html():
+    f = open('index.html', 'w')
+    html = f"""
         <html lang="en">
   <head>
     <!-- Required meta tags -->
@@ -39,10 +44,10 @@
 
             <tbody>
                 <tr scope="row">
-                  <td>Nicolas</td>
-                  <td>100001</td>
-                  <td>29494777</td>
-                  <td>Rivadavia 7900 </td>
+                  <td>{Cliente.nombre}</td>
+                  <td>{Cliente.numero}</td>
+                  <td>{Cliente.dni}</td>
+                  <td>{Direccion.calle} {Direccion.numero} </td>
                 </tr>
             </table>
       </div>
@@ -160,4 +165,8 @@
     
   </body>
 </html>
-    
+    """
+    f.write(html)
+    f.close()
+
+creacion_html()
