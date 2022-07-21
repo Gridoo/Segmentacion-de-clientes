@@ -2,21 +2,26 @@ import json
 
 with open("eventos_classic.json") as archivo:
     datos=json.load(archivo)
-
+estadoLISTA=[]
 class Transacciones:
     def __init__(self,datos):
-        self.estado=datos["transacciones"][0]["estado"]
-        self.tipo=datos["transacciones"][0]["tipo"]
-        self.cuentaNumero=datos["transacciones"][0]["cuentaNumero"]
-        self.cupoDiarioRestante=datos["transacciones"][0]["cupoDiarioRestante"]
-        self.cantidadExtraccionesHechas=datos["transacciones"][0]["cantidadExtraccionesHechas"]
-        self.monto=datos["transacciones"][0]["monto"]
-        self.fecha=datos["transacciones"][0]["fecha"]
-        self.numero=datos["transacciones"][0]["numero"]
-        self.saldoEnCuenta=datos["transacciones"][0]["saldoEnCuenta"]
-        self.TarjetasCredito=datos["transacciones"][0]["totalTarjetasDeCreditoActualmente"]
-        self.Chequeras=datos["transacciones"][0]["totalChequerasActualmente"]
+        for i in range(len(datos)):
+            self.estado=datos["transacciones"][i]["estado"]
+            estadoLISTA.append(datos["transacciones"][i]["estado"])
+            self.tipo=datos["transacciones"][0]["tipo"]
+            self.cuentaNumero=datos["transacciones"][0]["cuentaNumero"]
+            self.cupoDiarioRestante=datos["transacciones"][0]["cupoDiarioRestante"]
+            self.cantidadExtraccionesHechas=datos["transacciones"][0]["cantidadExtraccionesHechas"]
+            self.monto=datos["transacciones"][0]["monto"]
+            self.fecha=datos["transacciones"][0]["fecha"]
+            self.numero=datos["transacciones"][0]["numero"]
+            self.saldoEnCuenta=datos["transacciones"][0]["saldoEnCuenta"]
+            self.TarjetasCredito=datos["transacciones"][0]["totalTarjetasDeCreditoActualmente"]
+            self.Chequeras=datos["transacciones"][0]["totalChequerasActualmente"]
 transacciones=Transacciones(datos)
+print(estadoLISTA)
+#for i in range(len(datos)):
+ #   print(datos["transacciones"][i]["estado"])
 
 """transacciones": [{
 			"estado": "ACEPTADA",
