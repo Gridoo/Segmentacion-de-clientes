@@ -42,7 +42,5 @@ for i in range(len(datos)):
     # cantidadExtraccionesHechasLISTA.append(
     #   datos["transacciones"][i]["cantidadExtraccionesHechas"])
 
-print(cupoDiarioRestanteLISTA)
-
 
 # cantidadExtraccionesHechas rompe el bucle, lo comento por que no encuentro el motivo
