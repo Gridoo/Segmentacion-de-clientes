@@ -1,10 +1,20 @@
 from clientes import *
+from transacciones import *
 import transacciones as tr
 import motivos as mot
 
 
-i = mot.transacciones_aprobadas()
-
+def transferencias_HTML():
+    html2 = f"""
+          <tr scope="row">
+              <th scope="row"></th>
+              <td>{mot.i}</td>
+              <td>{transaccionesData.tipo}</td>
+              <td>{transaccionesData.tipo}</td>
+              <td></td>
+              <td></td>
+            </tr>
+        """
 
 def creacion_html():
     f = open('index.html', 'w')
@@ -37,7 +47,6 @@ def creacion_html():
             </thead>
             <tbody>
                 <tr scope="row">
-                  <td>{i}</td>
                   <td>{data.nombre}</td>
                   <td>{data.numero}</td>
                   <td>{data.dni}</td>
@@ -61,15 +70,7 @@ def creacion_html():
             </tr>
           </thead>
           <tbody>
-            <tr scope="row">
-              <th scope="row"></th>
-              <td>{tr.numero}</td>
-              <td>{tr.fecha}</td>
-              <td>{tr.tipo}</td>
-              <td>{tr.estado}</td>
-              <td>{tr.monto}</td>
-              <td>Excedió el cupo diario.</td>
-            </tr>
+            {transferencias_HTML()}
             <tr class="spacer"><td colspan="100"></td></tr>
             <tr scope="row">
                 <th scope="row"></th>
@@ -148,3 +149,7 @@ def creacion_html():
 
 
 creacion_html()
+
+#from transacciones import *
+#import transacciones as tr
+#import motivos as mot

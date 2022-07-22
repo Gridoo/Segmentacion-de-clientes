@@ -3,20 +3,40 @@ import json
 with open("eventos_classic.json") as archivo:
     datos = json.load(archivo)
 estadoLISTA = []
-tipoLISTA = []
-cuentaNumeroLISTA = []
-cupoDiarioRestanteLISTA = []
-cantidadExtraccionesHechasLISTA = []
-montoLISTA = []
-fechaLISTA = []
-numeroLISTA = []
-saldoEnCuentaLISTA = []
-TarjetasCreditoLISTA = []
-ChequerasLISTA = []
+#tipoLISTA = []
+#cuentaNumeroLISTA = []
+#cupoDiarioRestanteLISTA = []
+#cantidadExtraccionesHechasLISTA = []
+#montoLISTA = []
+#fechaLISTA = []
+#numeroLISTA = []
+#saldoEnCuentaLISTA = []
+#TarjetasCreditoLISTA = []
+#ChequerasLISTA = []
+
+class Transacciones:
+    def __init__(self,datos):
+        self.tipo=datos["transacciones"][0]["tipo"]
+        self.cuentaNumero=datos["transacciones"][0]["cuentaNumero"]
+        self.cupoDiarioRestante=datos["transacciones"][0]["cupoDiarioRestante"]
+        self.cantidadExtraccionesHechas=datos["transacciones"][0]["cantidadExtraccionesHechas"]
+        self.monto=datos["transacciones"][0]["monto"]
+        self.fecha=datos["transacciones"][0]["fecha"]
+        self.numero=datos["transacciones"][0]["numero"]
+        self.saldoEnCuenta=datos["transacciones"][0]["saldoEnCuenta"]
+        self.TarjetasCredito=datos["transacciones"][0]["totalTarjetasDeCreditoActualmente"]
+        self.Chequeras=datos["transacciones"][0]["totalChequerasActualmente"]
+
+transaccionesData=Transacciones(datos)
+
+
 
 for i in range(len(datos)):
     estadoLISTA.append(datos["transacciones"][i]["estado"])
-    tipoLISTA.append(datos["transacciones"][i]["tipo"])
+
+
+
+"""  tipoLISTA.append(datos["transacciones"][i]["tipo"])
     cuentaNumeroLISTA.append(datos["transacciones"][i]["cuentaNumero"])
     cupoDiarioRestanteLISTA.append(
         datos["transacciones"][i]["cupoDiarioRestante"])
@@ -30,3 +50,4 @@ for i in range(len(datos)):
                           ["totalChequerasActualmente"])
     # cantidadExtraccionesHechasLISTA.append(datos["transacciones"][i]["cantidadExtraccionesHechas"])
 # cantidadExtraccionesHechas rompe el bucle, lo comento por que no encuentro el motivo
+"""
