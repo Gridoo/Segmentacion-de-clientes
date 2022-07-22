@@ -1,5 +1,9 @@
 from clientes import *
 import transacciones as tr
+import motivos as mot
+
+
+i = mot.transacciones_aprobadas()
 
 
 def creacion_html():
@@ -33,6 +37,7 @@ def creacion_html():
             </thead>
             <tbody>
                 <tr scope="row">
+                  <td>{i}</td>
                   <td>{data.nombre}</td>
                   <td>{data.numero}</td>
                   <td>{data.dni}</td>
