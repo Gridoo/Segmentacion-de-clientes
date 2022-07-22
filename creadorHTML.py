@@ -4,17 +4,8 @@ import transacciones as tr
 import motivos as mot
 
 
-def transferencias_HTML():
-    html2 = f"""
-          <tr scope="row">
-              <th scope="row"></th>
-              <td>{mot.i}</td>
-              <td>{transaccionesData.tipo}</td>
-              <td>{transaccionesData.tipo}</td>
-              <td></td>
-              <td></td>
-            </tr>
-        """
+i = mot.transacciones_aprobadas()
+
 
 def creacion_html():
     f = open('index.html', 'w')
@@ -47,6 +38,7 @@ def creacion_html():
             </thead>
             <tbody>
                 <tr scope="row">
+                  <td>{i}</td>
                   <td>{data.nombre}</td>
                   <td>{data.numero}</td>
                   <td>{data.dni}</td>
@@ -70,13 +62,21 @@ def creacion_html():
             </tr>
           </thead>
           <tbody>
-            {transferencias_HTML()}
+            <tr scope="row">
+              <th scope="row"></th>
+              <td></td>
+              <td></td>
+              <td>{lista[0]["tipo"]}</td>
+              <td></td>
+              <td></td>
+              <td>Excedió el cupo diario.</td>
+            </tr>
             <tr class="spacer"><td colspan="100"></td></tr>
             <tr scope="row">
                 <th scope="row"></th>
                 <td>1</td>
                 <td>16/07/2022 21:18:44</td>
-                <td>Retiro_efectivo_cajero_automático</td>
+                <td>{lista[1]["tipo"]}</td>
                 <td>Rechazado</td>
                 <td>$10000</td>
                 <td>Excedió el cupo diario.</td>
@@ -149,7 +149,3 @@ def creacion_html():
 
 
 creacion_html()
-
-#from transacciones import *
-#import transacciones as tr
-#import motivos as mot

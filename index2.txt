@@ -1,0 +1,10 @@
+
+          <tr scope="row">
+              <th scope="row"></th>
+              <td>0</td>
+              <td>RETIRO_EFECTIVO_CAJERO_AUTOMATICO</td>
+              <td>RETIRO_EFECTIVO_CAJERO_AUTOMATICO</td>
+              <td></td>
+              <td></td>
+            </tr>
+        

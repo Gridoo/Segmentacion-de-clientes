@@ -26,7 +26,7 @@
 		},
 		{
 			"estado": "RECHAZADA",
-			"tipo": "RETIRO_EFECTIVO_CAJERO_AUTOMATICO",
+			"tipo": "RETIRO_EFECTIVO_CAJERO_AUTOMATICO2",
 			"cuentaNumero": 190,
 			"cupoDiarioRestante": 9000,
 			"monto": 11000,

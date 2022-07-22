@@ -13,11 +13,11 @@ estadoLISTA = []
 #saldoEnCuentaLISTA = []
 #TarjetasCreditoLISTA = []
 #ChequerasLISTA = []
-
+lista=datos["transacciones"]
 class Transacciones:
     def __init__(self,datos):
-        self.tipo=datos["transacciones"][0]["tipo"]
-        self.cuentaNumero=datos["transacciones"][0]["cuentaNumero"]
+        self.tipo=lista[0]["tipo"]
+        self.cuentaNumero=datos["transacciones"][0]["cuentaNumero"] #se puede borrar todo, hay que usar {lista[posicion]["tipo"]}
         self.cupoDiarioRestante=datos["transacciones"][0]["cupoDiarioRestante"]
         self.cantidadExtraccionesHechas=datos["transacciones"][0]["cantidadExtraccionesHechas"]
         self.monto=datos["transacciones"][0]["monto"]
@@ -28,7 +28,7 @@ class Transacciones:
         self.Chequeras=datos["transacciones"][0]["totalChequerasActualmente"]
 
 transaccionesData=Transacciones(datos)
-
+print(transaccionesData.tipo)
 
 
 for i in range(len(datos)):
