@@ -1,5 +1,7 @@
 from clientes import *
-from transacciones import *
+import transacciones as tr
+
+
 def creacion_html():
     f = open('index.html', 'w')
     html = f"""
@@ -56,11 +58,11 @@ def creacion_html():
           <tbody>
             <tr scope="row">
               <th scope="row"></th>
-              <td>{transacciones.numero}</td>
-              <td>{transacciones.fecha}</td>
-              <td>{transacciones.tipo}</td>
-              <td>{transacciones.estado}</td>
-              <td>{transacciones.monto}</td>
+              <td>{tr.numero}</td>
+              <td>{tr.fecha}</td>
+              <td>{tr.tipo}</td>
+              <td>{tr.estado}</td>
+              <td>{tr.monto}</td>
               <td>Excedió el cupo diario.</td>
             </tr>
             <tr class="spacer"><td colspan="100"></td></tr>
@@ -138,4 +140,6 @@ def creacion_html():
     """
     f.write(html)
     f.close()
+
+
 creacion_html()
