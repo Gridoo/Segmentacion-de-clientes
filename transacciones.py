@@ -1,38 +1,48 @@
 import json
 
 with open("eventos_classic.json") as archivo:
-    datos=json.load(archivo)
-estadoLISTA=[]
-class Transacciones:
-    def __init__(self,datos):
-        for i in range(len(datos)):
-            self.estado=datos["transacciones"][i]["estado"]
-            estadoLISTA.append(datos["transacciones"][i]["estado"])
-            self.tipo=datos["transacciones"][0]["tipo"]
-            self.cuentaNumero=datos["transacciones"][0]["cuentaNumero"]
-            self.cupoDiarioRestante=datos["transacciones"][0]["cupoDiarioRestante"]
-            self.cantidadExtraccionesHechas=datos["transacciones"][0]["cantidadExtraccionesHechas"]
-            self.monto=datos["transacciones"][0]["monto"]
-            self.fecha=datos["transacciones"][0]["fecha"]
-            self.numero=datos["transacciones"][0]["numero"]
-            self.saldoEnCuenta=datos["transacciones"][0]["saldoEnCuenta"]
-            self.TarjetasCredito=datos["transacciones"][0]["totalTarjetasDeCreditoActualmente"]
-            self.Chequeras=datos["transacciones"][0]["totalChequerasActualmente"]
-transacciones=Transacciones(datos)
-print(estadoLISTA)
-#for i in range(len(datos)):
- #   print(datos["transacciones"][i]["estado"])
+    datos = json.load(archivo)
+estadoLISTA = []
+tipoLISTA = []
+cuentaNumeroLISTA = []
+cupoDiarioRestanteLISTA = []
+cantidadExtraccionesHechasLISTA = []
+montoLISTA = []
+fechaLISTA = []
+numeroLISTA = []
+saldoEnCuentaLISTA = []
+TarjetasCreditoLISTA = []
+ChequerasLISTA = []
 
-"""transacciones": [{
-			"estado": "ACEPTADA",
-			"tipo": "RETIRO_EFECTIVO_CAJERO_AUTOMATICO",
-			"cuentaNumero": 190,
-			"cupoDiarioRestante": 9000,
-			"cantidadExtraccionesHechas": 1,
-			"monto": 1000,
-			"fecha": "20/06/2022 16:00:55",
-			"numero": 1,
-			"saldoEnCuenta": 100000,
-			"totalTarjetasDeCreditoActualmente" : 0,
-			"totalChequerasActualmente" : 0
-		},"""
+for i in range(len(datos)):
+    estado = datos["transacciones"][i]["estado"]
+    estadoLISTA.append(datos["transacciones"][i]["estado"])
+    tipo = datos["transacciones"][i]["tipo"]
+    tipoLISTA.append(datos["transacciones"][i]["tipo"])
+    cuentaNumero = datos["transacciones"][i]["cuentaNumero"]
+    cuentaNumeroLISTA.append(datos["transacciones"][i]["cuentaNumero"])
+    cupoDiarioRestante = datos["transacciones"][i]["cupoDiarioRestante"]
+    cupoDiarioRestanteLISTA.append(
+        datos["transacciones"][i]["cupoDiarioRestante"])
+    monto = datos["transacciones"][i]["monto"]
+    montoLISTA.append(datos["transacciones"][i]["monto"])
+    fecha = datos["transacciones"][i]["fecha"]
+    fechaLISTA.append(datos["transacciones"][i]["fecha"])
+    numero = datos["transacciones"][i]["numero"]
+    numeroLISTA.append(datos["transacciones"][i]["numero"])
+    saldoEnCuenta = datos["transacciones"][i]["saldoEnCuenta"]
+    saldoEnCuentaLISTA.append(datos["transacciones"][i]["saldoEnCuenta"])
+    TarjetasCredito = datos["transacciones"][i]["totalTarjetasDeCreditoActualmente"]
+    TarjetasCreditoLISTA.append(
+        datos["transacciones"][i]["totalTarjetasDeCreditoActualmente"])
+    Chequeras = datos["transacciones"][i]["totalChequerasActualmente"]
+    ChequerasLISTA.append(datos["transacciones"][i]
+                          ["totalChequerasActualmente"])
+    #cantidadExtraccionesHechas = datos["transacciones"][i]["cantidadExtraccionesHechas"]
+    # cantidadExtraccionesHechasLISTA.append(
+    #   datos["transacciones"][i]["cantidadExtraccionesHechas"])
+
+print(cupoDiarioRestanteLISTA)
+
+
+# cantidadExtraccionesHechas rompe el bucle, lo comento por que no encuentro el motivo
