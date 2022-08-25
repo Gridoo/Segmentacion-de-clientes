@@ -50,11 +50,10 @@ def creacion_html():
         </div>
       </div>
     </div>
-    <body>
       <div class="table-responsive custom-table-responsive">
         <table class="table custom-table">
           <br><br><br><br>
-            <h2 class="mb-5">Historial de Transacciones</h2>
+            <h2 class="mb-5" style="margin:20px">Historial de Transacciones</h2>
             <thead>
                 <tr>  
                   <th scope="col"></th>
@@ -75,22 +74,28 @@ def creacion_html():
 def bloque_html(x):
   f = open('index.html', 'a') 
   html2=f"""
-  <body>
-      <div class="table-responsive custom-table-responsive">
-        <table class="table custom-table">
-          <br>
-            <tbody>
-              <tr scope="row">
-                <th scope="row"></th>
-                  <td>{lista[x]["numero"]}</td>
-                  <td>{lista[x]["fecha"]}</td>
-                  <td>{lista[x]["tipo"]}</td>
-                  <td>{lista[x]["estado"]}</td>
-                  <td>${lista[x]["monto"]}</td>
-                  <td>{lista[x]["monto"]}</td>
-              </tr>
-          </tbody>
-        </table>"""
+    <body>
+    <div class="content">
+      <div class="container">
+        <div class="container">
+          <table class="table custom-table">
+              <thead>
+              
+              <tbody>
+                  <tr scope="row">
+                    <td>{lista[x]["numero"]}</td>
+                    <td>{lista[x]["fecha"]}</td>
+                    <td>{lista[x]["tipo"]}</td>
+                    <td>{lista[x]["estado"]}</td>
+                    <td>${lista[x]["monto"]}</td>
+                    <td>{lista[x]["monto"]}</td>
+                  </tr>
+              </table>
+              </thead>
+        </div>
+      </div>
+    </div>
+    </body>"""
   f.write(html2)
   f.close()
 
