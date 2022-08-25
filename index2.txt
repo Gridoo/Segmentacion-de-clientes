@@ -7,4 +7,113 @@
               <td></td>
               <td></td>
             </tr>
-        
+
+
+"""  tipoLISTA.append(datos["transacciones"][i]["tipo"])
+    cuentaNumeroLISTA.append(datos["transacciones"][i]["cuentaNumero"])
+    cupoDiarioRestanteLISTA.append(
+        datos["transacciones"][i]["cupoDiarioRestante"])
+    montoLISTA.append(datos["transacciones"][i]["monto"])
+    fechaLISTA.append(datos["transacciones"][i]["fecha"])
+    numeroLISTA.append(datos["transacciones"][i]["numero"])
+    saldoEnCuentaLISTA.append(datos["transacciones"][i]["saldoEnCuenta"])
+    TarjetasCreditoLISTA.append(
+        datos["transacciones"][i]["totalTarjetasDeCreditoActualmente"])
+    ChequerasLISTA.append(datos["transacciones"][i]
+                          ["totalChequerasActualmente"])
+    # cantidadExtraccionesHechasLISTA.append(datos["transacciones"][i]["cantidadExtraccionesHechas"])
+# cantidadExtraccionesHechas rompe el bucle, lo comento por que no encuentro el motivo
+"""
+class Transacciones:
+    def __init__(self,datos):
+        self.tipo=lista[0]["tipo"]
+        self.cuentaNumero=datos["transacciones"][0]["cuentaNumero"] #se puede borrar todo, hay que usar {lista[posicion]["tipo"]}
+        self.cupoDiarioRestante=datos["transacciones"][0]["cupoDiarioRestante"]
+        self.cantidadExtraccionesHechas=datos["transacciones"][0]["cantidadExtraccionesHechas"]
+        self.monto=datos["transacciones"][0]["monto"]
+        self.fecha=datos["transacciones"][0]["fecha"]
+        self.numero=datos["transacciones"][0]["numero"]
+        self.saldoEnCuenta=datos["transacciones"][0]["saldoEnCuenta"]
+        self.TarjetasCredito=datos["transacciones"][0]["totalTarjetasDeCreditoActualmente"]
+        self.Chequeras=datos["transacciones"][0]["totalChequerasActualmente"]
+estadoLISTA = []
+#tipoLISTA = []
+#cuentaNumeroLISTA = []
+#cupoDiarioRestanteLISTA = []
+#cantidadExtraccionesHechasLISTA = []
+#montoLISTA = []
+#fechaLISTA = []
+#numeroLISTA = []
+#saldoEnCuentaLISTA = []
+#TarjetasCreditoLISTA = []
+#ChequerasLISTA = []
+
+for i in range(len(datos)):
+    estadoLISTA.append(datos["transacciones"][i]["estado"])
+
+
+<tr class="spacer"><td colspan="100"></td></tr>
+            <tr scope="row">
+                <th scope="row"></th>
+                <td>1</td>
+                <td>16/07/2022 21:18:44</td>
+                <td>{lista[1]["tipo"]}</td>
+                <td>Rechazado</td>
+                <td>$10000</td>
+                <td>Excedió el cupo diario.</td>
+              </tr>
+              <tr class="spacer"><td colspan="100"></td></tr>
+              <tr scope="row">
+                <th scope="row">
+                </th>
+                <td>1</td>
+                <td>16/07/2022 21:18:44</td>
+                <td>Retiro_efectivo_cajero_automático</td>
+                <td>Rechazado</td>
+                <td>$10000</td>
+                <td>Excedió el cupo diario.</td>
+              </tr>
+              <tr class="spacer"><td colspan="100"></td></tr>
+              <tr scope="row">
+                <th scope="row">
+                </th>
+                <td>1</td>
+                <td>16/07/2022 21:18:44</td>
+                <td>Retiro_efectivo_cajero_automático</td>
+                <td>Rechazado</td>
+                <td>$10000</td>
+                <td>Excedió el cupo diario.</td>
+              </tr>
+              <tr class="spacer"><td colspan="100"></td></tr>
+              <tr scope="row">
+                <th scope="row">
+                </th>
+                <td>1</td>
+                <td>16/07/2022 21:18:44</td>
+                <td>Retiro_efectivo_cajero_automático</td>
+                <td>Rechazado</td>
+                <td>$10000</td>
+                <td>Excedió el cupo diario.</td>
+              </tr>
+              <tr class="spacer"><td colspan="100"></td></tr>
+              <tr scope="row">
+                <th scope="row">
+                </th>
+                <td>1</td>
+                <td>16/07/2022 21:18:44</td>
+                <td>Retiro_efectivo_cajero_automático</td>
+                <td>Rechazado</td>
+                <td>$10000</td>
+                <td>Excedió el cupo diario.</td>
+              </tr>
+              <tr class="spacer"><td colspan="100"></td></tr>
+              <tr scope="row">
+                <th scope="row">
+                </th>
+                <td>1</td>
+                <td>16/07/2022 21:18:44</td>
+                <td>Retiro_efectivo_cajero_automático</td>
+                <td>Rechazado</td>
+                <td>$10000</td>
+                <td>Excedió el cupo diario.</td>
+              </tr>
