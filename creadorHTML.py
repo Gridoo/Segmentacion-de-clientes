@@ -1,9 +1,8 @@
 from clientes import *
 from transacciones import *
-import transacciones as tr
 from motivos import *
 
-def creacion_html():
+def creacion_htmlCLASSIC():
     f = open('index.html', 'w') 
     html = f"""
           <html lang="en">
@@ -31,7 +30,6 @@ def creacion_html():
                   <th scope="col">Nro Cliente</th>
                   <th scope="col">DNI</th>
                   <th scope="col">Dirección</th>
-                  <th scope="col">Tipo Cuenta</th>
                 </tr>
               </thead>
               <tbody>
@@ -41,7 +39,6 @@ def creacion_html():
                     <td>{data.numero}</td>
                     <td>{data.dni}</td>
                     <td>{direccion.calle} {direccion.numero}</td>
-                    <td>{data.tipo}</td>
                   </tr>
               </table>
         </div>
@@ -50,7 +47,8 @@ def creacion_html():
       <div class="table-responsive custom-table-responsive">
         <table class="table custom-table">
           <br><br><br><br>
-            <h2 class="mb-5" style="margin:20px">Historial de Transacciones</h2>
+            <h2 style="margin:20px">Historial de Transacciones</h2>
+            <h4 style="margin:20px">Cliente {data.tipo}</h4>
             <thead>
                 <tr>  
                   <th scope="col"></th>
@@ -67,7 +65,7 @@ def creacion_html():
     f.write(html)
     f.close()
 
-def bloque_html(x):
+def bloque_htmlCLASSIC(x):
   f = open('index.html', 'a') 
   html2=f"""
               <tbody>
@@ -86,9 +84,7 @@ def bloque_html(x):
   f.write(html2)
   f.close()
 
-
-
-creacion_html()
+creacion_htmlCLASSIC()
 for x in range(0,len(lista),1):
   if(lista[x]["estado"]=="ACEPTADA"):
     id="-"
@@ -105,4 +101,5 @@ for x in range(0,len(lista),1):
       id=motivosTransfe(x)
     elif(lista[x]["tipo"]=="TRANSFERENCIA_RECIBIDA"):
       id=motivosTransfeReci(x)
-  bloque_html(x)
+  bloque_htmlCLASSIC(x)
+

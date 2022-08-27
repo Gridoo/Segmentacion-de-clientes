@@ -29,6 +29,9 @@ class ClienteGold(Cliente):
     def __init__(self,data) -> None:
         super().__init__(data)
 
+
+
 class ClienteBlack(Cliente):
     def __init__(self,data) -> None:
         super().__init__(data)
+
