@@ -8,4 +8,3 @@ lista=datos["transacciones"]
 for i in range(len(datos)):
     estadoLISTA.append(datos["transacciones"][i]["estado"])
 
-

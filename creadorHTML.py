@@ -1,12 +1,7 @@
-from re import I
 from clientes import *
 from transacciones import *
 import transacciones as tr
-import motivos as mot
-
-
-id = mot.transacciones_aprobadas()
-
+from motivos import *
 
 def creacion_html():
     f = open('index.html', 'w') 
@@ -31,20 +26,22 @@ def creacion_html():
           <table class="table custom-table">
               <thead>
                 <tr>
-                  <th scope="col">Nro Cliente</th>
                   <th scope="col">Nombre</th>
-                  <th scope="col">Número</th>
+                  <th scope="col">Apellido</th>
+                  <th scope="col">Nro Cliente</th>
                   <th scope="col">DNI</th>
-                  <th scope="col">Dirección</th> 
+                  <th scope="col">Dirección</th>
+                  <th scope="col">Tipo Cuenta</th>
                 </tr>
               </thead>
               <tbody>
                   <tr scope="row">
-                    <td>{id}</td>
                     <td>{data.nombre}</td>
+                    <td>{data.apellido}</td>
                     <td>{data.numero}</td>
                     <td>{data.dni}</td>
                     <td>{direccion.calle} {direccion.numero}</td>
+                    <td>{data.tipo}</td>
                   </tr>
               </table>
         </div>
@@ -65,41 +62,41 @@ def creacion_html():
                   <th scope="col">Razón Rechazo</th>
                 </tr>
             </thead>
-        </table>
-      </div>
-    </body>"""
+            
+        """
     f.write(html)
     f.close()
 
 def bloque_html(x):
   f = open('index.html', 'a') 
   html2=f"""
-    <body>
-    <div class="content">
-      <div class="container">
-        <div class="container">
-          <table class="table custom-table">
-              <thead>
-              
               <tbody>
                   <tr scope="row">
+                    <td></td>
                     <td>{lista[x]["numero"]}</td>
                     <td>{lista[x]["fecha"]}</td>
                     <td>{lista[x]["tipo"]}</td>
                     <td>{lista[x]["estado"]}</td>
                     <td>${lista[x]["monto"]}</td>
-                    <td>{lista[x]["monto"]}</td>
+                    <td>{id}</td>
                   </tr>
-              </table>
-              </thead>
-        </div>
-      </div>
-    </div>
-    </body>"""
+              </tbody>
+            
+"""
   f.write(html2)
   f.close()
 
 
+
 creacion_html()
-for x in range(0,len(lista)):
+for x in range(0,len(lista),1):
+  if(lista[x]["estado"]=="ACEPTADA"):
+    print("aceptadas")
+    id="-"
+  elif(lista[x]["estado"]=="RECHAZADA"):
+    print("rechazadas")
+    if (lista[x]["tipo"]=="RETIRO_EFECTIVO_CAJERO_AUTOMATICO"):
+      id=motivosEfectivo(x)
+    elif(lista[x]["tipo"]=="ALTA_TARJETA_CREDITO"):
+      id=motivosTarjeta()
   bloque_html(x)
