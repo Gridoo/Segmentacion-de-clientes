@@ -2,7 +2,7 @@ from clientes import *
 from transacciones import *
 from motivos import *
 
-def creacion_htmlCLASSIC():
+def creacion_html():
     f = open('index.html', 'w') 
     html = f"""
           <html lang="en">
@@ -65,7 +65,7 @@ def creacion_htmlCLASSIC():
     f.write(html)
     f.close()
 
-def bloque_htmlCLASSIC(x):
+def bloque_html(x):
   f = open('index.html', 'a') 
   html2=f"""
               <tbody>
@@ -84,7 +84,7 @@ def bloque_htmlCLASSIC(x):
   f.write(html2)
   f.close()
 
-creacion_htmlCLASSIC()
+creacion_html()
 for x in range(0,len(lista),1):
   if(lista[x]["estado"]=="ACEPTADA"):
     id="-"
@@ -101,5 +101,5 @@ for x in range(0,len(lista),1):
       id=motivosTransfe(x)
     elif(lista[x]["tipo"]=="TRANSFERENCIA_RECIBIDA"):
       id=motivosTransfeReci(x)
-  bloque_htmlCLASSIC(x)
+  bloque_html(x)
 

@@ -1,4 +1,5 @@
 import json
+#cambiar eventos.json para ver Classic, Gold y BLack
 
 with open("eventos_classic.json") as archivo:
     datos=json.load(archivo)
@@ -20,18 +21,3 @@ class Cliente:
         self.direccion=Direccion
         self.tipo=datos["tipo"]
 data=Cliente(datos)
-
-class ClienteClassic(Cliente):
-    def __init__(self,data) -> None:
-        super().__init__(data)
-
-class ClienteGold(Cliente):
-    def __init__(self,data) -> None:
-        super().__init__(data)
-
-
-
-class ClienteBlack(Cliente):
-    def __init__(self,data) -> None:
-        super().__init__(data)
-
