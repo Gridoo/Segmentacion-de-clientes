@@ -91,12 +91,18 @@ def bloque_html(x):
 creacion_html()
 for x in range(0,len(lista),1):
   if(lista[x]["estado"]=="ACEPTADA"):
-    print("aceptadas")
     id="-"
   elif(lista[x]["estado"]=="RECHAZADA"):
-    print("rechazadas")
     if (lista[x]["tipo"]=="RETIRO_EFECTIVO_CAJERO_AUTOMATICO"):
       id=motivosEfectivo(x)
     elif(lista[x]["tipo"]=="ALTA_TARJETA_CREDITO"):
-      id=motivosTarjeta()
+      id=motivosTarjeta(x)
+    elif(lista[x]["tipo"]=="ALTA_CHEQUERA"):
+      id=motivosChequera(x)
+    elif(lista[x]["tipo"]=="COMPRA_DOLAR"):
+      id=motivosDolar(x)
+    elif(lista[x]["tipo"]=="TRANSFERENCIA_ENVIADA"):
+      id=motivosTransfe(x)
+    elif(lista[x]["tipo"]=="TRANSFERENCIA_RECIBIDA"):
+      id=motivosTransfeReci(x)
   bloque_html(x)
