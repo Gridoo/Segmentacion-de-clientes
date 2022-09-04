@@ -1,5 +1,3 @@
-from motivos import Razon
-
 
 class Cuenta:
 

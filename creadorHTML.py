@@ -1,5 +1,5 @@
 
-from motivos import *
+from razones import Razon
 import codecs
 
 def generate_html(clasic, gold, black):
