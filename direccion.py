@@ -7,4 +7,3 @@ class Direccion:
         self.pais=datos["direccion"]["pais"]
     def output_as_label(self):
         return f"{self.calle} N° {self.numero}, {self.ciudad}, {self.provincia}, {self.pais}"
-direccion=Direccion(datos)

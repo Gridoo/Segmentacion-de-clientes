@@ -1,5 +1,6 @@
 from abc import ABC, abstractmethod
-from cuenta import Cuenta9
+from cuenta import Cuenta
+from direccion import Direccion
 
 class Cliente:
     def __init__(self,datos):
@@ -30,4 +31,4 @@ class Cliente:
 
     def costo_transferencia(self, monto: int) -> int:
         pass
-data=Cliente(datos)
+

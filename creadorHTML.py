@@ -1,105 +1,97 @@
-from clientes import *
-from transacciones import *
+
 from motivos import *
+import codecs
 
-def creacion_html():
-    f = open('index.html', 'w') 
-    html = f"""
-          <html lang="en">
-    <head>
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-      <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
-      <link rel="stylesheet" href="fonts/icomoon/style.css">
-      <link rel="stylesheet" href="css/owl.carousel.min.css">
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css">
-      <link rel="stylesheet" href="style.css">
-      <title>Reporte ITBANK</title>
-    </head>
+def generate_html(clasic, gold, black):
+    razones_clasic = [Razon(transaccion, clasic).razon for transaccion in clasic.cuenta.transacciones_r]
+    razones_gold = [Razon(transaccion, gold).razon for transaccion in gold.cuenta.transacciones_r]
+    razones_black = [Razon(transaccion, black).razon for transaccion in black.cuenta.transacciones_r]
 
-    <body>
-    <div class="content">
+    finish_html(clasic, generate_table_row(clasic, razones_clasic))
+    finish_html(gold, generate_table_row(gold, razones_gold))
+    finish_html(black, generate_table_row(black, razones_black))
+
+def generate_table_row(client, razones):
+
+    table_rows = ''
+    for i in range(len(client.cuenta.transacciones_r)):
+        table_rows += '<tr>'
+        for key, value in client.cuenta.transacciones_r[i].items():
+            if key in ['numero', 'fecha', 'tipo', 'estado', 'monto']:
+                table_rows += f"<td>{value}</td>"
+
+        table_rows += f"<td>{razones[i]}</td>"
+        table_rows += '</tr>'
+        table_rows += '<tr class="spacer"><td colspan="100"></td></tr>'
+
+    return table_rows
+
+def finish_html(client, table_rows):
+    with codecs.open(f"{type(client).__name__}.html", "w", "utf-8") as file:
+        html_content = f"""<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="fonts/icomoon/style.css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css">
+    <!-- Style -->
+    <link rel="stylesheet" href="style.css">
+    <title>Reporte ITBANK</title>
+  </head>
+  <body>
+  <div class="content">   
+    <div class="container">
+      <h1 class="mb-5">Reporte Transacciones - Cliente {type(client).__name__}</h1>
       <div class="container">
-        <h1 class="mb-5" >Reporte Transacciones - ITBANK</h1> 
-        <div class="container">
-          <table class="table custom-table">
-              <thead>
-                <tr>
-                  <th scope="col">Nombre</th>
-                  <th scope="col">Apellido</th>
-                  <th scope="col">Nro Cliente</th>
-                  <th scope="col">DNI</th>
-                  <th scope="col">Dirección</th>
+        <table class="table custom-table">
+            <thead>
+              <tr>  
+                <th scope="col">Nombre</th>
+                <th scope="col">Número</th>
+                <th scope="col">DNI</th>
+                <th scope="col">Dirección</th> 
+              </tr>
+            </thead>
+            <tbody>
+                <tr scope="row">
+                  <td>{client.nombre}</td>
+                  <td>{client.numero}</td>
+                  <td>{client.dni}</td>
+                  <td>{client.direccion.output_as_label()}</td>
                 </tr>
-              </thead>
-              <tbody>
-                  <tr scope="row">
-                    <td>{data.nombre}</td>
-                    <td>{data.apellido}</td>
-                    <td>{data.numero}</td>
-                    <td>{data.dni}</td>
-                    <td>{direccion.calle} {direccion.numero}</td>
-                  </tr>
-              </table>
-        </div>
+            </table>
       </div>
-    </div>
       <div class="table-responsive custom-table-responsive">
         <table class="table custom-table">
-          <br><br><br><br>
-            <h2 style="margin:20px">Historial de Transacciones</h2>
-            <h4 style="margin:20px">Cliente {data.tipo}</h4>
-            <thead>
-                <tr>  
-                  <th scope="col"></th>
-                  <th scope="col">Número</th>
-                  <th scope="col">Fecha</th>
-                  <th scope="col">Tipo</th>
-                  <th scope="col">Estado</th>
-                  <th scope="col">Monto</th>
-                  <th scope="col">Razón Rechazo</th>
-                </tr>
-            </thead>
-            
-        """
-    f.write(html)
-    f.close()
-
-def bloque_html(x):
-  f = open('index.html', 'a') 
-  html2=f"""
-              <tbody>
-                  <tr scope="row">
-                    <td></td>
-                    <td>{lista[x]["numero"]}</td>
-                    <td>{lista[x]["fecha"]}</td>
-                    <td>{lista[x]["tipo"]}</td>
-                    <td>{lista[x]["estado"]}</td>
-                    <td>${lista[x]["monto"]}</td>
-                    <td>{id}</td>
-                  </tr>
-              </tbody>
-            
+            <br><br><br><br>
+            <h2 class="mb-5">Historial de Transacciones</h2>
+          <thead>
+            <tr>  
+              <th scope="col">Número</th>
+              <th scope="col">Fecha</th>
+              <th scope="col">Tipo</th>
+              <th scope="col">Estado</th>
+              <th scope="col">Monto</th>
+              <th scope="col">Razón Rechazo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr scope="row">
+              {table_rows}
+            </tr>
+            <tr class="spacer"><td colspan="100"></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  </body>
+</html>
 """
-  f.write(html2)
-  f.close()
 
-creacion_html()
-for x in range(0,len(lista),1):
-  if(lista[x]["estado"]=="ACEPTADA"):
-    id="-"
-  elif(lista[x]["estado"]=="RECHAZADA"):
-    if (lista[x]["tipo"]=="RETIRO_EFECTIVO_CAJERO_AUTOMATICO"):
-      id=motivosEfectivo(x)
-    elif(lista[x]["tipo"]=="ALTA_TARJETA_CREDITO"):
-      id=motivosTarjeta(x)
-    elif(lista[x]["tipo"]=="ALTA_CHEQUERA"):
-      id=motivosChequera(x)
-    elif(lista[x]["tipo"]=="COMPRA_DOLAR"):
-      id=motivosDolar(x)
-    elif(lista[x]["tipo"]=="TRANSFERENCIA_ENVIADA"):
-      id=motivosTransfe(x)
-    elif(lista[x]["tipo"]=="TRANSFERENCIA_RECIBIDA"):
-      id=motivosTransfeReci(x)
-  bloque_html(x)
-
+        file.write(html_content)

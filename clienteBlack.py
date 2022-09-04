@@ -1,5 +1,5 @@
 import json
-from clases.cliente import Cliente
+from clientes import Cliente
 
 
 class Black(Cliente):
