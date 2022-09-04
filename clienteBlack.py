@@ -1,25 +1,24 @@
-
 import json
 from clases.cliente import Cliente
 
 
-class Gold(Cliente):
+class Black(Cliente):
 
     def __init__(self) -> None:
-        with open("data/eventos_gold.json") as jsonFile:
+        with open("data/eventos_black.json") as jsonFile:
             archivo = json.load(jsonFile)
             jsonFile.close()
-            super().__init__(archivo, {'limite_extraccion_diario': 20000, 'limite_transferencia_recibida': 500000,
-                                       'costo_transferencia': 0.5})
+        super().__init__(archivo, {'limite_extraccion_diario': 100000, 'limite_transferencia_recibida': None,
+                                   'costo_transferencia': None})
 
     def puede_crear_chequera(self, cant_chequeras) -> bool:
-        if cant_chequeras >= 1:
+        if cant_chequeras >= 2:
             return False
         else:
             return True
 
     def puede_crear_tarjeta_de_credito(self, cant_tarjetas) -> bool:
-        if cant_tarjetas >= 1:
+        if cant_tarjetas >= 5:
             return False
         else:
             return True

@@ -1,17 +1,6 @@
-import json
-#cambiar eventos.json para ver Classic, Gold y BLack
+from abc import ABC, abstractmethod
+from cuenta import Cuenta9
 
-with open("eventos_classic.json") as archivo:
-    datos=json.load(archivo)
-
-class Direccion:
-    def __init__(self,datos):
-        self.calle=datos["direccion"]["calle"]
-        self.numero=datos["direccion"]["numero"]
-        self.ciudad=datos["direccion"]["ciudad"]
-        self.provincia=datos["direccion"]["provincia"]
-        self.pais=datos["direccion"]["pais"]
-direccion=Direccion(datos)
 class Cliente:
     def __init__(self,datos):
         self.nombre=datos["nombre"]
@@ -20,4 +9,25 @@ class Cliente:
         self.dni=datos["dni"]
         self.direccion=Direccion
         self.tipo=datos["tipo"]
+    def get_cuenta(self):
+        return self.cuenta
+
+    @abstractmethod
+    def puede_crear_chequera(self, cant_chequeras) -> bool:
+        pass
+
+    @abstractmethod
+    def puede_crear_tarjeta_de_credito(self, cant_tarjetas) -> bool:
+        pass
+
+    @abstractmethod
+    def puede_comprar_dolar(self) -> bool:
+        pass
+
+    @abstractmethod
+    def posee_cuenta_corriente(self) -> bool:
+        pass
+
+    def costo_transferencia(self, monto: int) -> int:
+        pass
 data=Cliente(datos)
