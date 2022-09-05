@@ -1,13 +1,13 @@
-import clienteClassic
-import clienteGold
-import clienteBlack
-from creadorHTML import generate_html
+from clases import cliente_classic
+from clases import cliente_gold
+from clases import cliente_black
+from scripts.creadorHTML import generate_html
 
 try:
-    cliente_Classic = clienteClassic.Classic()
-    cliente_Gold = clienteGold.Gold()
-    cliente_Black = clienteBlack.Black()
+    cliente_class = cliente_classic.Classic()
+    cliente_gold = cliente_gold.Gold()
+    cliente_black = cliente_black.Black()
 except FileNotFoundError:
-    print("Alguno de los archivos Clasic,Gold o Black no existe")
+    print("Alguno de los archivos json no existe")
     exit()
-generate_html(cliente_Classic, cliente_Gold, cliente_Black)
+generate_html(cliente_class, cliente_gold, cliente_black)

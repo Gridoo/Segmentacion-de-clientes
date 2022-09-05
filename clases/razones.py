@@ -1,5 +1,4 @@
-from nis import match
-from clientes import Cliente
+import clases.cliente
 
 class Razon:
 
@@ -32,9 +31,9 @@ class RazonRetiroEfectivo:
             if not evento['monto'] <= evento['cupoDiarioRestante']:
                 return f"La cantidad supera el cupo diario de retiros, solo puede retirar ${evento['cupoDiarioRestante']}. "
             elif evento['monto'] > evento['saldoEnCuenta']:
-                return f"No tenes fondos suficientes."
+                return f"No tienes fondos suficientes."
         else:
-            return f"Excede el monto de máximo de ${cuenta.limite_extraccion_diario}"
+            return f"Excede el monto de MÁXIMO de ${cuenta.limite_extraccion_diario}"
 
 
 class RazonAltaChequera:
@@ -45,7 +44,7 @@ class RazonAltaChequera:
             if evento['totalChequerasActualmente'] == 0:
                 return f"El cliente no puede crear chequeras"
             else:
-                return f"El cliente no puede crear más chequeras"
+                return f"El cliente no puede crear mas chequeras"
 
 
 class RazonAltaTarjetaCredito:
@@ -66,7 +65,7 @@ class RazonCompraDolar:
         if not cliente.puede_comprar_dolar:
             return f"El cliente no puede comprar dolares"
         else:
-            return f"No se puede realizar la compra porque el monto de ${evento['monto']} supera el de su saldo en cuenta"
+            return f"No puede realizar la compra porque el monto de ${evento['monto']} supera el de su saldo en cuenta"
 
 
 class RazonTransferenciaEnviada:
@@ -82,4 +81,4 @@ class RazonTransferenciaRecibida:
     @staticmethod
     def validacion(evento, cuenta):
         if cuenta.limite_transferencia_recibida == None or evento['monto'] > cuenta.limite_transferencia_recibida:
-            return f"No puede recibir un monto de ${evento['monto']} sin previo aviso"
+            return f"No puede recibir un monto de ${evento['monto']} porque supera su limite sin aviso"

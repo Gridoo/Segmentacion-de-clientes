@@ -1,3 +1,5 @@
+from clases.razones import Razon
+
 
 class Cuenta:
 
@@ -6,3 +8,4 @@ class Cuenta:
         self.limite_transferencia_recibida = datos_cuenta['limite_transferencia_recibida']
         self.costo_transferencia = datos_cuenta['costo_transferencia']
         self.transacciones_r = [transaccion for transaccion in transacciones if transaccion['estado'] == 'RECHAZADA']
+

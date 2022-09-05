@@ -1,6 +1,5 @@
-
 import json
-from clientes import Cliente
+from clases.cliente import Cliente
 
 
 class Gold(Cliente):

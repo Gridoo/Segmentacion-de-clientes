@@ -1,5 +1,4 @@
-
-from razones import Razon
+from clases.razones import *
 import codecs
 
 def generate_html(clasic, gold, black):
@@ -22,7 +21,7 @@ def generate_table_row(client, razones):
 
         table_rows += f"<td>{razones[i]}</td>"
         table_rows += '</tr>'
-        table_rows += '<tr class="spacer"><td colspan="100"></td></tr>'
+        table_rows += '<tr class="spacer"></tr>'
 
     return table_rows
 
@@ -46,7 +45,7 @@ def finish_html(client, table_rows):
   <body>
   <div class="content">   
     <div class="container">
-      <h1 class="mb-5">Reporte Transacciones - Cliente {type(client).__name__}</h1>
+      <h1 class="mb-5">Reporte Transacciones - ITBANK</h1>
       <div class="container">
         <table class="table custom-table">
             <thead>
@@ -68,15 +67,15 @@ def finish_html(client, table_rows):
       </div>
       <div class="table-responsive custom-table-responsive">
         <table class="table custom-table">
-            <br><br><br><br>
-            <h2 class="mb-5">Historial de Transacciones</h2>
+            <h2 style="margin-top:20px;margin-bottom:20px" >Historial de Transacciones</h2>
+            <h3>Cliente {type(client).__name__}</h2>
           <thead>
             <tr>  
-              <th scope="col">Número</th>
-              <th scope="col">Fecha</th>
-              <th scope="col">Tipo</th>
               <th scope="col">Estado</th>
+              <th scope="col">Tipo</th>
               <th scope="col">Monto</th>
+              <th scope="col">Fecha</th>
+              <th scope="col">Numero</th>
               <th scope="col">Razón Rechazo</th>
             </tr>
           </thead>
@@ -84,7 +83,7 @@ def finish_html(client, table_rows):
             <tr scope="row">
               {table_rows}
             </tr>
-            <tr class="spacer"><td colspan="100"></td></tr>
+            <tr class="spacer"></tr>
           </tbody>
         </table>
       </div>
