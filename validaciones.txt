@@ -46,22 +46,3 @@ TRANSFERENCIA_RECIBIDA:
 ○	Sin aviso monto <= $500.000 
 ●	Cliente Black: Pueden recibir transferencias por cualquier monto sin previa autorización.
 ○	No hay condición
-
-for x in range(0,len(lista),1):
-  if(lista[x]["estado"]=="ACEPTADA"):
-    id="-"
-  elif(lista[x]["estado"]=="RECHAZADA"):
-    if (lista[x]["tipo"]=="RETIRO_EFECTIVO_CAJERO_AUTOMATICO"):
-      id=motivosEfectivo(x)
-    elif(lista[x]["tipo"]=="ALTA_TARJETA_CREDITO"):
-      id=motivosTarjeta(x)
-    elif(lista[x]["tipo"]=="ALTA_CHEQUERA"):
-      id=motivosChequera(x)
-    elif(lista[x]["tipo"]=="COMPRA_DOLAR"):
-      id=motivosDolar(x)
-    elif(lista[x]["tipo"]=="TRANSFERENCIA_ENVIADA"):
-      id=motivosTransfe(x)
-    elif(lista[x]["tipo"]=="TRANSFERENCIA_RECIBIDA"):
-      id=motivosTransfeReci(x)
-  bloque_html(x)
-
