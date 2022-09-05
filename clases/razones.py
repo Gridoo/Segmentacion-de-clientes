@@ -29,11 +29,11 @@ class RazonRetiroEfectivo:
     def validacion(evento, cuenta):
         if evento['monto'] < cuenta.limite_extraccion_diario:
             if not evento['monto'] <= evento['cupoDiarioRestante']:
-                return f"La cantidad supera el cupo diario de retiros, solo puede retirar ${evento['cupoDiarioRestante']}. "
+                return f"La cantidad supera el cupo diario de retiros, puede retirar hasta ${evento['cupoDiarioRestante']}. "
             elif evento['monto'] > evento['saldoEnCuenta']:
-                return f"No tienes fondos suficientes."
+                return f"No tiene fondos suficientes"
         else:
-            return f"Excede el monto de MÁXIMO de ${cuenta.limite_extraccion_diario}"
+            return f"Excede el monto de máximo de ${cuenta.limite_extraccion_diario}"
 
 
 class RazonAltaChequera:
@@ -44,7 +44,7 @@ class RazonAltaChequera:
             if evento['totalChequerasActualmente'] == 0:
                 return f"El cliente no puede crear chequeras"
             else:
-                return f"El cliente no puede crear mas chequeras"
+                return f"El cliente no puede crear más chequeras"
 
 
 class RazonAltaTarjetaCredito:
@@ -53,9 +53,9 @@ class RazonAltaTarjetaCredito:
     def validacion(evento, cliente):
         if not cliente.puede_crear_tarjeta_de_credito(evento['totalTarjetasDeCreditoActualmente']):
             if evento['totalTarjetasDeCreditoActualmente'] == 0:
-                return f"El cliente no puede crear tarjetas de credito"
+                return f"El cliente no puede crear tarjetas de crédito"
             else:
-                return f"El cliente no puede crear mas tarjetas de credito"
+                return f"El cliente no puede crear más tarjetas de crédito"
 
 
 class RazonCompraDolar:
@@ -65,7 +65,7 @@ class RazonCompraDolar:
         if not cliente.puede_comprar_dolar:
             return f"El cliente no puede comprar dolares"
         else:
-            return f"No puede realizar la compra porque el monto de ${evento['monto']} supera el de su saldo en cuenta"
+            return f"No puede realizar la compra porque el monto de ${evento['monto']} supera elsaldo de la cuenta"
 
 
 class RazonTransferenciaEnviada:
@@ -73,7 +73,7 @@ class RazonTransferenciaEnviada:
     @staticmethod
     def validacion(evento, cuenta):
         if cuenta.costo_transferencia == None or evento['monto'] > cuenta.costo_transferencia:
-            return f"El monto ${evento['monto']} supera su saldo en cuenta"
+            return f"El monto ${evento['monto']} supera el saldo de la cuenta"
 
 
 class RazonTransferenciaRecibida:
@@ -81,4 +81,4 @@ class RazonTransferenciaRecibida:
     @staticmethod
     def validacion(evento, cuenta):
         if cuenta.limite_transferencia_recibida == None or evento['monto'] > cuenta.limite_transferencia_recibida:
-            return f"No puede recibir un monto de ${evento['monto']} porque supera su limite sin aviso"
+            return f"No puede recibir un monto de ${evento['monto']} sin previo sin aviso"

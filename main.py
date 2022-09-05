@@ -11,3 +11,5 @@ except FileNotFoundError:
     print("Alguno de los archivos json no existe")
     exit()
 generate_html(cliente_class, cliente_gold, cliente_black)
+
+#ejecutar main.py para crear los index
