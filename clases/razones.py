@@ -1,7 +1,6 @@
 import clases.cliente
 
 class Razon:
-
     def __init__(self, evento, cliente) -> None:
         self.razon = self.resolver(evento, cliente)
 
@@ -22,9 +21,7 @@ class Razon:
             case 'TRANSFERENCIA_RECIBIDA':
                 return RazonTransferenciaRecibida.validacion(evento, obj.cuenta)
 
-
 class RazonRetiroEfectivo:
-
     @staticmethod
     def validacion(evento, cuenta):
         if evento['monto'] < cuenta.limite_extraccion_diario:
@@ -35,9 +32,7 @@ class RazonRetiroEfectivo:
         else:
             return f"Excede el monto de máximo de ${cuenta.limite_extraccion_diario}"
 
-
 class RazonAltaChequera:
-
     @staticmethod
     def validacion(evento, cliente):
         if not cliente.puede_crear_chequera(evento['totalChequerasActualmente']):
@@ -46,9 +41,7 @@ class RazonAltaChequera:
             else:
                 return f"El cliente no puede crear más chequeras"
 
-
 class RazonAltaTarjetaCredito:
-
     @staticmethod
     def validacion(evento, cliente):
         if not cliente.puede_crear_tarjeta_de_credito(evento['totalTarjetasDeCreditoActualmente']):
@@ -57,9 +50,7 @@ class RazonAltaTarjetaCredito:
             else:
                 return f"El cliente no puede crear más tarjetas de crédito"
 
-
 class RazonCompraDolar:
-
     @staticmethod
     def validacion(evento, cliente):
         if not cliente.puede_comprar_dolar:
@@ -67,17 +58,13 @@ class RazonCompraDolar:
         else:
             return f"No puede realizar la compra porque el monto de ${evento['monto']} supera elsaldo de la cuenta"
 
-
 class RazonTransferenciaEnviada:
-
     @staticmethod
     def validacion(evento, cuenta):
         if cuenta.costo_transferencia == None or evento['monto'] > cuenta.costo_transferencia:
             return f"El monto ${evento['monto']} supera el saldo de la cuenta"
 
-
 class RazonTransferenciaRecibida:
-
     @staticmethod
     def validacion(evento, cuenta):
         if cuenta.limite_transferencia_recibida == None or evento['monto'] > cuenta.limite_transferencia_recibida:

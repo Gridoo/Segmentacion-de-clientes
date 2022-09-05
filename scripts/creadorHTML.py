@@ -5,13 +5,11 @@ def generate_html(clasic, gold, black):
     razones_clasic = [Razon(transaccion, clasic).razon for transaccion in clasic.cuenta.transacciones_r]
     razones_gold = [Razon(transaccion, gold).razon for transaccion in gold.cuenta.transacciones_r]
     razones_black = [Razon(transaccion, black).razon for transaccion in black.cuenta.transacciones_r]
-
     finish_html(clasic, generate_table_row(clasic, razones_clasic))
     finish_html(gold, generate_table_row(gold, razones_gold))
     finish_html(black, generate_table_row(black, razones_black))
 
 def generate_table_row(client, razones):
-
     table_rows = ''
     for i in range(len(client.cuenta.transacciones_r)):
         table_rows += '<tr>'
@@ -86,5 +84,4 @@ def finish_html(client, table_rows):
   </body>
 </html>
 """
-
         file.write(html_content)
